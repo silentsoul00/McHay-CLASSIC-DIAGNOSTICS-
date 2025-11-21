@@ -1,45 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mchay CLASSIC DIAGNOSTICS</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mchay CLASSIC DIAGNOSTICS</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f1f5f9;
+        margin: 0;
+        padding: 0;
+        color: #0d1b2a;
+    }
+
+    header {
+        text-align: center;
+        padding: 20px;
+        background: white;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    header img {
+        width: 150px;
+        height: 150px;
+        object-fit: contain;
+        margin-bottom: 10px;
+    }
+
+    h1 { font-size: 26px; margin: 10px 0; font-weight: bold; }
+    .sub {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 10px;
+    }
+
+    a {
+        color: #1565c0;
+        text-decoration: none;
+        margin: 0 10px;
+    }
+
+    /* Search Bar */
+    #searchBar {
+        width: 90%;
+        max-width: 600px;
+        display: block;
+        margin: 20px auto;
+        padding: 12px;
+        border: 2px solid #0d47a1;
+        border-radius: 10px;
+        font-size: 15px;
+    }
+
+    /* Category Buttons */
+    .category-container {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .cat-btn {
+        background: #1976d2;
+        color: white;
+        padding: 10px 15px;
+        margin: 5px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .cat-btn:hover {
+        background: #0d47a1;
+    }
+
+    /* Service Cards */
+    .card {
+        width: 90%;
+        max-width: 800px;
+        margin: 15px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .card h2 {
+        margin-top: 0;
+        color: #0d47a1;
+    }
+
+    /* Complaint Section */
+    #complaints {
+        margin-top: 40px;
+    }
+
+    form {
+        max-width: 500px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+        padding: 12px;
+        background: #0d47a1;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+    }
+
+</style>
 </head>
 <body>
 
-    <header>
-        <h1>Mchay CLASSIC DIAGNOSTICS</h1>
-        <p>Your trusted medical diagnostic center.</p>
-    </header>
+<header>
+    <img src="logo.png" alt="Mchay CLASSIC Diagnostics Logo">
+    <h1>Mchay CLASSIC DIAGNOSTICS</h1>
+    <div class="sub">Humanity to the Core – Accurate • Reliable • Professional</div>
+    <a href="mailto:classicalmchay007@gmail.com">classicalmchay007@gmail.com</a> |
+    <a href="tel:+2348037148199">08037148199</a>
+</header>
 
-    <section class="intro">
-        <h2>Welcome</h2>
-        <p>
-            We provide top-quality diagnostic services.  
-            Use our Medical Complaint Board to submit your health symptoms for review.
-        </p>
-    </section>
+<input id="searchBar" type="text" placeholder="Search services (e.g. Malaria, X-Ray, Glucose)…">
 
-    <section class="complaint-board">
-        <h2>Medical Complaint Board</h2>
+<div class="category-container">
+    <button class="cat-btn" onclick="filterCategory('ECG')">ECG</button>
+    <button class="cat-btn" onclick="filterCategory('XRay')">Digital X-Ray</button>
+    <button class="cat-btn" onclick="filterCategory('Ultrasound')">Ultrasound</button>
+    <button class="cat-btn" onclick="filterCategory('Haematology')">Haematology</button>
+    <button class="cat-btn" onclick="filterCategory('Microbiology')">Microbiology</button>
+    <button class="cat-btn" onclick="filterCategory('Chemistry')">Chemical Pathology</button>
+    <button class="cat-btn" onclick="filterCategory('Histology')">Histology</button>
+    <button class="cat-btn" onclick="filterCategory('Special')">Special Tests</button>
+</div>
 
-        <form id="complaintForm">
-            <label>Your Full Name</label>
-            <input type="text" id="name" required>
+<!-- SERVICES -->
+<div id="services">
 
-            <label>Your Symptoms</label>
-            <textarea id="symptoms" required></textarea>
+    <div class="card" data-cat="ECG">
+        <h2>ECG</h2>
+        <ul>
+            <li>ECG (Resting) – 12-lead</li>
+            <li>ECG (Exercise / Stress Test)</li>
+        </ul>
+    </div>
 
-            <button type="submit">Submit Complaint</button>
-        </form>
+    <div class="card" data-cat="XRay">
+        <h2>Digital X-Ray</h2>
+        <ul>
+            <li>Chest (PA & LAT)</li>
+            <li>Abdominal (AP & LAT)</li>
+            <li>Pelvis (AP & LAT)</li>
+            <li>Skull (AP & LAT)</li>
+            <li>Spine – Cervical / Thoracic / Lumbar</li>
+            <li>Shoulder, Clavicle</li>
+            <li>Hand, Wrist, Elbow, Knee, Ankle, Foot</li>
+            <li>Hip / Femur / Long Bone</li>
+        </ul>
+    </div>
 
-        <div id="submittedComplaints">
-            <h3>Submitted Complaints</h3>
-            <ul id="complaintList"></ul>
-        </div>
-    </section>
+</div>
 
-    <script src="script.js"></script>
+<!-- COMPLAINT SECTION -->
+<section id="complaints">
+    <h2 style="text-align:center; color:#0d47a1;">Submit Your Medical Complaint</h2>
+    <p style="text-align:center;">Your complaint will be sent privately to our WhatsApp.</p>
+
+    <form id="complaintForm">
+        <input type="text" id="compName" placeholder="Your Name" required>
+        <input type="tel" id="compPhone" placeholder="Your Phone Number" required>
+        <textarea id="compText" rows="5" placeholder="Describe your medical complaint…" required></textarea>
+        <button type="submit">Submit Complaint</button>
+    </form>
+</section>
+
+<script>
+
+// SEARCH FUNCTION
+document.getElementById("searchBar").addEventListener("keyup", function () {
+    let value = this.value.toLowerCase();
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        card.style.display = card.innerText.toLowerCase().includes(value) ? "block" : "none";
+    });
+});
+
+// CATEGORY FILTER
+function filterCategory(cat) {
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        card.style.display = card.getAttribute("data-cat") === cat ? "block" : "none";
+    });
+}
+
+// COMPLAINT FORM → WHATSAPP
+document.getElementById("complaintForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let name = document.getElementById("compName").value;
+    let phone = document.getElementById("compPhone").value;
+    let text = document.getElementById("compText").value;
+
+    let msg =
+        `NEW COMPLAINT:%0A%0A` +
+        `Name: ${name}%0A` +
+        `Phone: ${phone}%0A` +
+        `Complaint: ${text}`;
+
+    window.open(`https://wa.me/2348037148199?text=${msg}`, "_blank");
+});
+</script>
+
 </body>
-</html>
+            </html>

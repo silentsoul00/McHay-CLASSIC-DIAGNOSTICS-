@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mchay CLASSIC DIAGNOSTICS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Mchay CLASSIC DIAGNOSTICS</h1>
+        <p>Your trusted medical diagnostic center.</p>
+    </header>
+
+    <section class="intro">
+        <h2>Welcome</h2>
+        <p>
+            We provide top-quality diagnostic services.  
+            Use our Medical Complaint Board to submit your health symptoms for review.
+        </p>
+    </section>
+
+    <section class="complaint-board">
+        <h2>Medical Complaint Board</h2>
+
+        <form id="complaintForm">
+            <label>Your Full Name</label>
+            <input type="text" id="name" required>
+
+            <label>Your Symptoms</label>
+            <textarea id="symptoms" required></textarea>
+
+            <button type="submit">Submit Complaint</button>
+        </form>
+
+        <div id="submittedComplaints">
+            <h3>Submitted Complaints</h3>
+            <ul id="complaintList"></ul>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
